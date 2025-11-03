@@ -13,7 +13,34 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/*.stories.{js,ts,jsx,tsx}',
+      '**/.storybook/**'
+    ],
     projects: [
+      // 通常のコンポーネントテスト用プロジェクト
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          globals: true,
+          include: ['components/**/*.{test,spec}.{js,ts,jsx,tsx}', 'src/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+          exclude: [
+            '**/node_modules/**',
+            '**/dist/**',
+            '**/*.stories.{js,ts,jsx,tsx}',
+            '**/.storybook/**'
+          ],
+          environment: 'jsdom',
+          setupFiles: ['./src/test/setup.ts'],
+        },
+      },
+      // Storybook テスト用プロジェクト
       {
         extends: true,
         plugins: [
