@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, userEvent, within } from '@storybook/test';
 import { Accordion } from '.';
 import './index.css';
 import React, { useState } from 'react';
@@ -115,6 +116,7 @@ export const MultipleAccordions: Story = {
 
 // 複数の排他的アコーディオン
 export const ExclusiveAccordions: Story = {
+  tags: ['test'],
   render: () => {
 
     const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
@@ -176,6 +178,55 @@ export const ExclusiveAccordions: Story = {
         </footer>
       </div>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // ページタイトルが表示されることを確認
+    await expect(canvas.getByRole('heading', { name: 'よくある質問（FAQ）' })).toBeInTheDocument();
+
+    // 4つのアコーディオンが表示されることを確認
+    const accountButton = canvas.getByRole('button', { name: 'アカウントについて' });
+    const pricingButton = canvas.getByRole('button', { name: '料金について' });
+    const supportButton = canvas.getByRole('button', { name: 'サポートについて' });
+    const securityButton = canvas.getByRole('button', { name: 'セキュリティについて' });
+
+    await expect(accountButton).toBeInTheDocument();
+    await expect(pricingButton).toBeInTheDocument();
+    await expect(supportButton).toBeInTheDocument();
+    await expect(securityButton).toBeInTheDocument();
+
+    // 最初は全て閉じている状態
+    await expect(accountButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(pricingButton).toHaveAttribute('aria-expanded', 'false');
+
+    // アカウントのアコーディオンを開く
+    await userEvent.click(accountButton);
+    await expect(accountButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(canvas.getByText('アカウントの作成、ログイン、パスワードの変更方法について説明します。')).toBeInTheDocument();
+
+    // 料金のアコーディオンを開く（アカウントは自動で閉じる）
+    await userEvent.click(pricingButton);
+    await expect(pricingButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(accountButton).toHaveAttribute('aria-expanded', 'false'); // 排他制御の確認
+    await expect(canvas.getByText('料金プラン、支払い方法、請求書の発行について説明します。')).toBeInTheDocument();
+    await expect(canvas.queryByText('アカウントの作成、ログイン、パスワードの変更方法について説明します。')).not.toBeInTheDocument();
+
+    // サポートのアコーディオンを開く
+    await userEvent.click(supportButton);
+    await expect(supportButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(pricingButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(canvas.getByText('お問い合わせ方法、サポート時間、対応範囲について説明します。')).toBeInTheDocument();
+
+    // 同じボタンをクリックして閉じる
+    await userEvent.click(supportButton);
+    await expect(supportButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(canvas.queryByText('お問い合わせ方法、サポート時間、対応範囲について説明します。')).not.toBeInTheDocument();
+
+    // セキュリティのアコーディオンを開く
+    await userEvent.click(securityButton);
+    await expect(securityButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(canvas.getByText('データの暗号化、プライバシー保護、セキュリティ対策について説明します。')).toBeInTheDocument();
   }
 }
 
@@ -212,3 +263,4 @@ export const ControlledAccordion: Story = {
     );
   },
 };
+
