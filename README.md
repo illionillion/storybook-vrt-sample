@@ -1,24 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Storybook VRT Sample
 
-## Getting Started
+このプロジェクトは、Storybookを使用したVisual Regression Testing (VRT)のサンプルです。
 
-First, run the development server:
+## 🚀 セットアップ
+
+### 1. 依存関係のインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. VRT環境の構築
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Docker Composeを使用してVRT環境を構築します。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# 初回またはDockerイメージを再ビルドする場合
+make vrt-build
+
+# 既存のイメージを使用する場合
+make vrt-up
+```
+
+## 📖 使い方
+
+### VRTテストの実行
+
+```bash
+# VRTテストを実行
+make vrt-test
+```
+
+### スナップショットの更新
+
+UIの変更を意図的に行った場合、スナップショットを更新します。
+
+```bash
+make vrt-update
+```
+
+### VRT環境の停止
+
+```bash
+make vrt-down
+```
+
+## 🎨 VRTタグの使い方
+
+VRTテストを実行したいStoryには、`tags: ['vrt']`を追加します。
+
+```tsx
+export const Default: Story = {
+  tags: ['vrt'],
+  args: {
+    title: 'サンプルタイトル',
+    children: 'サンプルコンテンツ',
+  },
+};
+```
+
+## 📝 利用可能なコマンド
+
+- `make vrt-build` - サービスをビルドして起動（初回や依存更新時に推奨）
+- `make vrt-up` - サービスをビルドせずに起動（既存イメージ利用）
+- `make vrt-test` - VRTテストを実行
+- `make vrt-update` - スナップショットを意図的に更新（UI変更時など）
+- `make vrt-down` - サービス停止
+
+## 📂 ディレクトリ構造
+
+```
+.
+├── .storybook/
+│   ├── main.ts              # Storybookの設定
+│   ├── preview.ts           # プレビューの設定
+│   └── test-runner.js       # VRTの設定
+├── components/
+│   └── accordion/
+│       ├── index.tsx        # Accordionコンポーネント
+│       ├── index.stories.tsx # Accordionのストーリー
+│       ├── index.test.tsx   # Accordionのテスト
+│       └── index.css        # Accordionのスタイル
+├── __image_snapshots__/     # VRTスナップショット（Gitで管理）
+│   └── __diff_output__/     # VRT差分画像（Gitで管理しない）
+├── Dockerfile.vrt           # VRT用のDockerfile
+├── compose.vrt.yml          # VRT用のDocker Compose設定
+├── Makefile                 # VRT操作用のMakefile
+└── package.json             # プロジェクトの依存関係
+```
+
+## 🧪 テスト
+
+### ユニットテスト
+
+```bash
+pnpm test
+```
+
+### Storybookの起動
+
+```bash
+pnpm storybook
+```
+
+## 🌐 Next.js開発
+
+### 開発サーバーの起動
+
+```bash
+pnpm dev
+```
+
+[http://localhost:3000](http://localhost:3000) でアプリケーションを確認できます。
+
+## 📚 参考リポジトリ
+
+このプロジェクトは、以下のリポジトリを参考に作成されています。
+
+- [illionillion/mermaid-editor](https://github.com/illionillion/mermaid-editor)
 
 ## Learn More
 
@@ -29,8 +128,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
