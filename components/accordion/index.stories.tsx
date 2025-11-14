@@ -44,6 +44,7 @@ type Story = StoryObj<typeof meta>;
 
 // 基本的な使用例
 export const Default: Story = {
+  tags: ['vrt'],
   args: {
     title: 'アコーディオンのタイトル',
     children: 'ここにアコーディオンの内容が入ります。長いテキストでも適切に表示されます。',
@@ -52,6 +53,7 @@ export const Default: Story = {
 
 // 初期状態で開いている
 export const DefaultOpen: Story = {
+  tags: ['vrt'],
   args: {
     title: '最初から開いているアコーディオン',
     children: 'このアコーディオンは初期状態で開いています。',
@@ -61,6 +63,7 @@ export const DefaultOpen: Story = {
 
 // 無効状態
 export const Disabled: Story = {
+  tags: ['vrt'],
   args: {
     title: '無効なアコーディオン',
     children: 'このアコーディオンは無効化されており、クリックできません。',
@@ -96,6 +99,7 @@ export const LongContent: Story = {
 
 // 複数のアコーディオン
 export const MultipleAccordions: Story = {
+  tags: ['vrt'],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <Accordion title="アコーディオン1" defaultOpen>
