@@ -21,8 +21,15 @@ export default {
   async preVisit(page) {
     // 画面幅を明示的に指定
     await page.setViewportSize(VIEWPORT);
+    // ライトモードを強制（ダークモードを無効化）
+    await page.emulateMedia({ colorScheme: 'light' });
   },
   async postVisit(page, context) {
+    // CSSとフォントの読み込みを待つ
+    await page.waitForLoadState('networkidle');
+    // 追加の待機時間（アニメーションやレンダリング完了のため）
+    await page.waitForTimeout(500);
+    
     const image = await page.screenshot();
     expect(image).toMatchImageSnapshot({
       customSnapshotsDir: "__image_snapshots__",

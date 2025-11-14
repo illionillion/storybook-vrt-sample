@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { expect, userEvent, within } from '@storybook/test';
 import { Accordion } from '.';
-import './index.css';
 import React, { useState } from 'react';
 
 const meta: Meta<typeof Accordion> = {
