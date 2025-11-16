@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './index.css';
+import styles from './index.module.css';
 
 interface AccordionProps {
   title: string;
@@ -38,13 +38,13 @@ export const Accordion = ({
   };
 
   return (
-    <div className="accordion">
+    <div className={styles.accordion}>
       <button
         type="button"
         aria-expanded={actualIsOpen}
         aria-disabled={isDisabled}
         onClick={handleToggle}
-        className={`accordion-header ${isDisabled ? "disabled" : ""}`}
+        className={`${styles.accordionHeader} ${isDisabled ? styles.disabled : ""}`}
       >
         {title}
         <span aria-hidden="true">{actualIsOpen ? "−" : "+"}</span>
@@ -53,7 +53,7 @@ export const Accordion = ({
       <div
         role="region"
         aria-hidden={!actualIsOpen}
-        className={`accordion-content ${actualIsOpen ? "open" : "closed"}`}
+        className={`${styles.accordionContent} ${actualIsOpen ? styles.open : styles.closed}`}
       >
         {actualIsOpen && children}
       </div>
