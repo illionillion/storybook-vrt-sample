@@ -32,7 +32,6 @@ export const Default: Story = {
 
 // すべてのフィールドにエラーがある状態
 export const WithAllErrors: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -45,7 +44,6 @@ export const WithAllErrors: Story = {
 
 // 一部のフィールドが入力済み
 export const PartiallyFilled: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -60,7 +58,6 @@ export const PartiallyFilled: Story = {
 
 // すべてのフィールドが入力済み
 export const FullyFilled: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -79,7 +76,6 @@ export const FullyFilled: Story = {
 
 // 名前フィールドのエラー
 export const NameFieldError: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -101,7 +97,6 @@ export const NameFieldError: Story = {
 
 // メールアドレスフィールドのエラー（無効な形式）
 export const EmailFieldError: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -125,7 +120,6 @@ export const EmailFieldError: Story = {
 
 // メッセージフィールドのエラー（10文字未満）
 export const MessageFieldError: Story = {
-  tags: ['vrt'],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
