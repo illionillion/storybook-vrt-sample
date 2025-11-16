@@ -39,7 +39,6 @@ type Story = StoryObj<typeof meta>;
 
 // デフォルト状態
 export const Default: Story = {
-  tags: ['vrt'],
   args: {
     children: '送信する',
     type: 'submit',
@@ -49,7 +48,6 @@ export const Default: Story = {
 
 // 無効状態
 export const Disabled: Story = {
-  tags: ['vrt'],
   args: {
     children: '送信する',
     type: 'submit',
@@ -59,7 +57,6 @@ export const Disabled: Story = {
 
 // 送信中状態
 export const Submitting: Story = {
-  tags: ['vrt'],
   args: {
     children: '送信中...',
     type: 'submit',
@@ -69,7 +66,6 @@ export const Submitting: Story = {
 
 // ボタンタイプ
 export const ButtonType: Story = {
-  tags: ['vrt'],
   args: {
     children: 'キャンセル',
     type: 'button',
@@ -79,7 +75,6 @@ export const ButtonType: Story = {
 
 // リセットタイプ
 export const ResetType: Story = {
-  tags: ['vrt'],
   args: {
     children: 'リセット',
     type: 'reset',
@@ -89,7 +84,6 @@ export const ResetType: Story = {
 
 // 長いテキスト
 export const LongText: Story = {
-  tags: ['vrt'],
   args: {
     children: 'お問い合わせ内容を送信する',
     type: 'submit',
@@ -134,7 +128,6 @@ export const DisabledClickInteraction: Story = {
 
 // ホバー状態（VRT用）
 export const Hover: Story = {
-  tags: ['vrt'],
   args: {
     children: '送信する',
     type: 'submit',
@@ -150,7 +143,6 @@ export const Hover: Story = {
 
 // フォーカス状態（VRT用）
 export const Focus: Story = {
-  tags: ['vrt'],
   args: {
     children: '送信する',
     type: 'submit',

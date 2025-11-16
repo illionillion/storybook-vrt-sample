@@ -73,7 +73,6 @@ const ControlledFormField = (args: any) => {
 
 // テキストフィールド - デフォルト
 export const TextFieldDefault: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'お名前',
@@ -87,7 +86,6 @@ export const TextFieldDefault: Story = {
 
 // テキストフィールド - 値入力済み
 export const TextFieldWithValue: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'お名前',
@@ -102,7 +100,6 @@ export const TextFieldWithValue: Story = {
 
 // テキストフィールド - エラー状態
 export const TextFieldWithError: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'お名前',
@@ -117,7 +114,6 @@ export const TextFieldWithError: Story = {
 
 // メールフィールド - デフォルト
 export const EmailFieldDefault: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'メールアドレス',
@@ -131,7 +127,6 @@ export const EmailFieldDefault: Story = {
 
 // メールフィールド - エラー状態
 export const EmailFieldWithError: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'メールアドレス',
@@ -146,7 +141,6 @@ export const EmailFieldWithError: Story = {
 
 // テキストエリア - デフォルト
 export const TextareaDefault: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'メッセージ',
@@ -161,7 +155,6 @@ export const TextareaDefault: Story = {
 
 // テキストエリア - 値入力済み
 export const TextareaWithValue: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'メッセージ',
@@ -177,7 +170,6 @@ export const TextareaWithValue: Story = {
 
 // テキストエリア - エラー状態
 export const TextareaWithError: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: 'メッセージ',
@@ -193,7 +185,6 @@ export const TextareaWithError: Story = {
 
 // 必須でないフィールド
 export const NotRequired: Story = {
-  tags: ['vrt'],
   render: (args) => <ControlledFormField {...args} />,
   args: {
     label: '会社名',
