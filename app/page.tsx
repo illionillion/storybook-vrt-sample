@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
-import { Accordion } from "../components/accordion";
+import { Accordion } from "../components/Accordion";
 import { ContactForm } from "../components/ContactForm";
 import { faqData, faqCategories, FAQ } from "../data/faq";
 

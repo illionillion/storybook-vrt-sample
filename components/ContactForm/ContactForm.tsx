@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import styles from "./ContactForm.module.css";
+import { FormField } from "./FormField";
+import { FormButton } from "./FormButton";
 
 interface ContactFormData {
   name: string;
@@ -105,77 +107,58 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label htmlFor="name" className={styles.label}>
-          お名前 <span className={styles.required}>*</span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className={`${styles.input} ${errors.name ? styles.error : ""}`}
-          placeholder="山田太郎"
-        />
-        {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
-      </div>
+      <FormField
+        label="お名前"
+        id="name"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        type="text"
+        placeholder="山田太郎"
+        error={errors.name}
+        required
+      />
 
-      <div className={styles.field}>
-        <label htmlFor="email" className={styles.label}>
-          メールアドレス <span className={styles.required}>*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={`${styles.input} ${errors.email ? styles.error : ""}`}
-          placeholder="example@example.com"
-        />
-        {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
-      </div>
+      <FormField
+        label="メールアドレス"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        type="email"
+        placeholder="example@example.com"
+        error={errors.email}
+        required
+      />
 
-      <div className={styles.field}>
-        <label htmlFor="subject" className={styles.label}>
-          件名 <span className={styles.required}>*</span>
-        </label>
-        <input
-          type="text"
-          id="subject"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          className={`${styles.input} ${errors.subject ? styles.error : ""}`}
-          placeholder="お問い合わせの件名"
-        />
-        {errors.subject && <span className={styles.errorMessage}>{errors.subject}</span>}
-      </div>
+      <FormField
+        label="件名"
+        id="subject"
+        name="subject"
+        value={formData.subject}
+        onChange={handleChange}
+        type="text"
+        placeholder="お問い合わせの件名"
+        error={errors.subject}
+        required
+      />
 
-      <div className={styles.field}>
-        <label htmlFor="message" className={styles.label}>
-          メッセージ <span className={styles.required}>*</span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          className={`${styles.textarea} ${errors.message ? styles.error : ""}`}
-          placeholder="お問い合わせ内容をご記入ください"
-          rows={6}
-        />
-        {errors.message && <span className={styles.errorMessage}>{errors.message}</span>}
-      </div>
+      <FormField
+        label="メッセージ"
+        id="message"
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        type="textarea"
+        placeholder="お問い合わせ内容をご記入ください"
+        error={errors.message}
+        required
+        rows={6}
+      />
 
-      <button
-        type="submit"
-        className={styles.submitButton}
-        disabled={isSubmitting}
-      >
+      <FormButton type="submit" disabled={isSubmitting}>
         {isSubmitting ? "送信中..." : "送信する"}
-      </button>
+      </FormButton>
     </form>
   );
 };
