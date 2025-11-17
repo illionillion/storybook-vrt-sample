@@ -2,6 +2,23 @@
 
 このプロジェクトは、Storybookを使用したVisual Regression Testing (VRT)のサンプルです。
 
+## ✨ 新機能: GitHub Pages自動デプロイ
+
+mainブランチにプッシュすると、Storybookが自動的に`docs`フォルダにビルドされ、GitHub Pagesにデプロイされます。
+
+### 📚 Storybook（コンポーネントカタログ）
+
+- **URL例**: `https://[your-username].github.io/storybook-vrt-sample/`
+- **自動デプロイ**: mainブランチへのプッシュで自動更新
+- **ビルド場所**: `docs`フォルダ（GitHub Pagesの標準設定）
+
+### 手動ビルド
+
+```bash
+pnpm run build-storybook
+# docs/ フォルダに静的ファイルが出力されます
+```
+
 ## 🚀 セットアップ
 
 ### 1. 依存関係のインストール
