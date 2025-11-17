@@ -1,0 +1,1 @@
+const e="_form_1vog0_1",o="_field_1vog0_11",r="_label_1vog0_15",t="_required_1vog0_23",_="_input_1vog0_27",s="_textarea_1vog0_28",n="_error_1vog0_47",a="_errorMessage_1vog0_64",g="_submitButton_1vog0_71",i={form:e,field:o,label:r,required:t,input:_,textarea:s,error:n,errorMessage:a,submitButton:g};export{i as s};
