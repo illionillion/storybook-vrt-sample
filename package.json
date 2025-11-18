@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --output-dir docs",
+    "build-storybook": "storybook build --output-dir docs/storybook",
     "test": "vitest --project=unit",
     "test:watch": "vitest --project=unit --watch",
     "test:storybook": "vitest --project=storybook",

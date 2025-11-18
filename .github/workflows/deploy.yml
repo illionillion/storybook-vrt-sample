@@ -29,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build Next.js static site
+        run: |
+          pnpm build
+        env:
+          NODE_ENV: production
+
       - name: Build Storybook
         run: pnpm run build-storybook
 
