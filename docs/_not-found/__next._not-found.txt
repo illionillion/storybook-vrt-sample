@@ -1,0 +1,4 @@
+1:"$Sreact.fragment"
+2:I[75889,["/storybook-vrt-sample/_next/static/chunks/38a1c91d64cec94a.js"],"default"]
+3:I[22301,["/storybook-vrt-sample/_next/static/chunks/38a1c91d64cec94a.js"],"default"]
+0:{"buildId":"aootCLP34eFcIzrXNCJ9x","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
