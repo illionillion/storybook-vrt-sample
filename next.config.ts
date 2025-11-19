@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: process.env.NODE_ENV === "production" ? "/storybook-vrt-sample" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/storybook-vrt-sample/" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/storybook-vrt-sample" : "",
 };
 
 export default nextConfig;
