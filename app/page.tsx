@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import { Accordion } from "../components/Accordion";
 import { ContactForm } from "../components/ContactForm";
-import { faqData, faqCategories, FAQ } from "../data/faq";
+import { faqData, faqCategories } from "../data/faq";
 
 export default function ContactPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -13,7 +13,7 @@ export default function ContactPage() {
     ? faqData 
     : faqData.filter(faq => faq.category === selectedCategory);
 
-  const handleFormSubmit = (data: any) => {
+  const handleFormSubmit = (data: { name: string; email: string; subject: string; message: string }) => {
     console.log("お問い合わせデータ:", data);
     // 実際のアプリケーションでは、ここでAPIにデータを送信
   };
