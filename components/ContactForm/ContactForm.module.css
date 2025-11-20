@@ -149,6 +149,42 @@
 
   .submitButton {
     background-color: #2563eb;
+    position: relative;
+    overflow: visible;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 0.75rem;
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(96, 165, 250, 0.6) 50%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(2px);
+      offset-path: border-box;
+      offset-rotate: 0deg;
+      animation: trail-path 4s linear infinite;
+      pointer-events: none;
+    }
+    &::after {
+      animation-delay: 2s;
+      opacity: 0;
+    }
+  }
+
+  @keyframes trail-path {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 0;
+    }
   }
 
   .submitButton:hover:not(:disabled) {
