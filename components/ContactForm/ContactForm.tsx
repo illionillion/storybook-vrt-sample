@@ -81,6 +81,7 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
       
       alert("お問い合わせを送信しました！");
     } catch (error) {
+      console.error("送信エラー:", error);
       alert("送信に失敗しました。もう一度お試しください。");
     } finally {
       setIsSubmitting(false);
